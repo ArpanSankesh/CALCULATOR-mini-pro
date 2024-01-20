@@ -7,20 +7,20 @@ const history = document.querySelector('#history')
 
 let string = "";
 
-AC.addEventListener("click", () => {
+const reset = function (){
   input.style.fontSize = "5.5rem";
   string = "";
   input.value = string;
   history.innerHTML = string;
-});
+};
 
-backSpaceBtn.addEventListener("click", () => {
+const remove = function () {
   if ((string.length = 0)) {
     input.style.fontSize = "5.5rem";
   }
   string = string.slice(0, string.length - 1);
   input.value = string;
-});
+};
 
 buttons.forEach(function (button) {
   button.addEventListener("click", function (e) {
@@ -36,11 +36,15 @@ buttons.forEach(function (button) {
   });
 });
 
-equalbtn.addEventListener("click", () => {
+const sum = function (){
   string = eval(string);
   input.value = string;
   history.innerHTML = string;
   console.log(string);
   string = '';
-});
+};
+
+equalbtn.addEventListener('click',sum)
+backSpaceBtn.addEventListener('click', remove)
+AC.addEventListener('click', reset)
 
